@@ -21,3 +21,5 @@ type T struct {
 ## module構成
 
 [modules layout](https://go.dev/doc/modules/layout)
+
+細かいモジュールに分けないなら直下に置く。

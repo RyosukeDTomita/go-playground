@@ -33,7 +33,13 @@ go mod init hello
 
 ### go mod tidy
 
-.goファイルでimportしている外部ライブラリがあれば自動でgo.sumに追加してくれる
+必要なimport文を追加したり，不要なimport文を削除したり，それに対応してgo.modやgo.sumを更新する
+
+---
+
+### go mod download
+
+`go mod download`で依存ライブラリのダウンロードを外だしすることでDockerのレイヤキャッシュを効率よく使える。[Go 開発者環境のコンテナー化 – パート 2](https://www.docker.com/ja-jp/blog/containerize-your-go-developer-environment-part-2/)
 
 ---
 
@@ -44,9 +50,6 @@ go mod init hello
 ```shell
 go install github.com/rakyll/hey@latest
 ```
-
-> [!NOTE]
-> `npm install`的なコマンドはなく，依存ライブラリは`go build`，`go run`実行時に自動インストールされる。開発環境でのみ使う`goimports`などはgo.modやgo.sumの管理対象ではないので，Dockerfileなどでは個別に`go install`する処理を書くことになりそう。
 
 ---
 
@@ -63,6 +66,10 @@ formatだけでなく，import文の管理ができる。
 ```shell
 # install
 go install golang.org/x/tools/cmd/goimports@latest
+```
+
+```shell
+goimports
 ```
 
 ---
@@ -89,4 +96,3 @@ staticcheck
 複数のlinterを同時に実行できる。
 
 ---
-
