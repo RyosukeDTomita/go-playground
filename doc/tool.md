@@ -80,7 +80,7 @@ goimports
 
 ```shelll
 # install
-go install golang.org/x/tools/cmd/goimports@latest
+go install honnef.co/go/tools/cmd/staticcheck@latest
 ```
 
 ```shell
