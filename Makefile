@@ -12,6 +12,10 @@ fmt:
 clean:
 	rm -rf $(BUILD_DIR)
 
+.PHONY: create
+create:
+	@mkdir -p bin
+
 .PHONY: lint
 lint: fmt
 	staticcheck
@@ -21,8 +25,8 @@ vet: fmt
 	go vet
 
 .PHONY: build
-build: vet $(GO_SRC)
-	@mkdir -p bin
+build: create vet
 	go mod tidy
 	go build -o $(BUILD_DIR)
 	@ls -lhS $(BUILD_DIR)
+

@@ -8,7 +8,7 @@ go install golang.org/x/tools/cmd/goimports@latest
 go install honnef.co/go/tools/cmd/staticcheck@latest
 EOF
 
-# dependency library
+# NOTE: go build実行時に依存パッケージは自動でインストールされるがこれを外だしすることでレイヤキャッシュを有効活用している
 COPY go.* .
 RUN --mount=type=cache,target=/go/pkg/mod go mod download
 
